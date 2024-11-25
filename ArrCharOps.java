@@ -163,28 +163,26 @@ public class ArrCharOps {
      * not empty.
      *
      * Characters are compared one by one from left to right, using their
-     * numeric Unicode values, as follows: 1. If two characters at the same
+     * numeric Unicode values, as follows: - If two characters at the same
      * position in both strings are different, the string with the smaller
-     * character is considered lexicographically smaller. 2. If all characters
-     * in the shorter string match the corresponding characters in the longer
-     * string, the shorter string is considered lexicographically smaller. 3. If
+     * character is considered lexicographically smaller. - If all characters in
+     * the shorter string match the corresponding characters in the longer
+     * string, the shorter string is considered lexicographically smaller. - If
      * both strings have the same characters and the same length, they are
-     * considered equal.
-     *
-     * Examples: - "apple" is less than "banana" because 'a' comes before 'b'. -
-     * "abc" is less than "abcd" because it is shorter. - "hello" is equal to
-     * "hello". - "date" is greater than "dark" because 't' comes after 'k'.
+     * considered equal. - Strings are compared in a case-sensitive manner.
      *
      * @param str1 the first string to compare
      * @param str2 the second string to compare
-     * @return -1 if str1 is lexicographically less than str2, zero if they are
-     * equal, and 1 if str1 is lexicographically greater than str2. return -2 if
-     * there is an error with the input.
+     * @return -1 if str1 is lexicographically less than str2, 0 if they are
+     * equal, and 1 if str1 is lexicographically greater than str2. Returns -2
+     * if either string is null or empty.
      */
     public static int compareTo(String str1, String str2) {
-        if (str1 == null || str2 == null) {
+
+        if (str1 == null || str2 == null || str1.isEmpty() || str2.isEmpty()) {
             return -2;
         }
+
         int minLength = Math.min(str1.length(), str2.length());
         for (int i = 0; i < minLength; i++) {
             char ch1 = str1.charAt(i);
@@ -205,4 +203,5 @@ public class ArrCharOps {
 
         return 0;
     }
+
 }
