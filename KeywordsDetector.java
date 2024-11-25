@@ -1,4 +1,6 @@
+
 public class KeywordsDetector {
+
     public static void main(String[] args) {
         String[] sentences = {
             "Our product will transform the market",
@@ -19,8 +21,46 @@ public class KeywordsDetector {
     }
 
     // Iterates through all the sentences.
-    // If a sentence contains one or more of the kewords, prints it.
+    // If a sentence contains one or more of the keywords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+        for (String sentence : sentences) {
+            for (String keyword : keywords) {
+                if (contains(lowerCase(sentence), lowerCase(keyword))) {
+                    System.out.println(sentence);
+                    break;
+                }
+            }
+        }
+    }
+
+    public static String lowerCase(String str) {
+        char[] result = new char[str.length()];
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'A' && ch <= 'Z') {
+                ch = (char) (ch + 32);
+            }
+            result[i] = ch;
+        }
+        return new String(result);
+    }
+
+    public static boolean contains(String str1, String str2) {
+        if (str2.length() > str1.length()) {
+            return false;
+        }
+        for (int i = 0; i <= str1.length() - str2.length(); i++) {
+            boolean found = true;
+            for (int j = 0; j < str2.length(); j++) {
+                if (str1.charAt(i + j) != str2.charAt(j)) {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) {
+                return true;
+            }
+        }
+        return false;
     }
 }
