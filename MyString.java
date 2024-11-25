@@ -16,10 +16,24 @@ public class MyString {
         System.out.println(contains("resignation", "sign")); // true
     }
 
-    /** Returns the lowercase version of the given string. */
+    /** Returns the lowercase version of the given string using a character array. */
     public static String lowerCase(String str) {
-        // Replace the following statement with your code
-        return null;
+        
+        char[] result = new char[str.length()];
+
+        
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if (ch >= 'A' && ch <= 'Z') {
+                ch = (char) (ch + 32); 
+            }
+
+            result[i] = ch; 
+        }
+
+        
+        return new String(result);
     }
 
     /** If str1 contains str2, returns true; otherwise returns false. */
